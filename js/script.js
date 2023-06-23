@@ -1,6 +1,7 @@
 const hamburger = document.querySelector('.hamburger'),
       menu = document.querySelector('.menu'),
       closeMenu = document.querySelector('.menu__close');
+      activeTabs = document.querySelector('.skills__tab2');
 
 hamburger.addEventListener('click', () => {
     menu.classList.add('active');
@@ -9,3 +10,50 @@ hamburger.addEventListener('click', () => {
 closeMenu.addEventListener('click', () => {
     menu.classList.remove('active');
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+
+    const skillsTab = document.querySelectorAll('.skills__tab'),
+          skillsContent = document.querySelectorAll('.skills__grid'),
+          skillsTabs = document.querySelector('.skills__tabs');
+    
+    function hideSkillsGrid() {
+        skillsContent.forEach(item => {
+        //item.style.display = 'none';
+        //item.classList.add('hide');
+            item.classList.remove('skills__grid_active', 'fade');
+        }); 
+  
+        skillsTab.forEach(item => {
+            item.classList.remove('skills__tab_active');
+        });
+    }
+  
+    function showSkillsGrid(i = 0) {
+      //tabsContent[i].style.display = "block";
+      //skillsContent[i].classList.remove('hide');
+      skillsContent[i].classList.add('skills__grid_active', 'fade');
+      skillsTab[i].classList.add('skills__tab_active');
+    }
+  
+    hideSkillsGrid();
+    showSkillsGrid();
+  
+    skillsTabs.addEventListener('click', (event, i) => {
+        const target = event.target;
+        //console.log(target.parentNode);
+        if (target && target.parentNode.matches('li.skills__tab')) { // або (target.parentNode.classList.contains('skills__tab')) {  
+            skillsTab.forEach((item, i) => {
+                //console.log(item);
+                if (item === target.parentNode) {
+                    hideSkillsGrid();
+                    showSkillsGrid(i);
+                }
+            });    
+        }
+    });
+    
+  
+  
+  
+  });
