@@ -1,3 +1,5 @@
+window.addEventListener('DOMContentLoaded', () => {
+
 const hamburger = document.querySelector('.hamburger'),
       menu = document.querySelector('.menu'),
       closeMenu = document.querySelector('.menu__close');
@@ -11,16 +13,14 @@ closeMenu.addEventListener('click', () => {
     menu.classList.remove('active');
 });
 
-window.addEventListener('DOMContentLoaded', () => {
 
+//Навички
     const skillsTab = document.querySelectorAll('.skills__tab'),
           skillsContent = document.querySelectorAll('.skills__grid'),
           skillsTabs = document.querySelector('.skills__tabs');
     
     function hideSkillsGrid() {
         skillsContent.forEach(item => {
-        //item.style.display = 'none';
-        //item.classList.add('hide');
             item.classList.remove('skills__grid_active', 'fade');
         }); 
   
@@ -30,8 +30,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   
     function showSkillsGrid(i = 0) {
-      //tabsContent[i].style.display = "block";
-      //skillsContent[i].classList.remove('hide');
       skillsContent[i].classList.add('skills__grid_active', 'fade');
       skillsTab[i].classList.add('skills__tab_active');
     }
@@ -53,7 +51,13 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
     
+//Шкала навичок
+    const counters = document.querySelectorAll('.skills__progress-counter'),
+          lines = document.querySelectorAll('.skills__progress-scale span');
+
+    counters.forEach( (item, i) => {
+        lines[i].style.width = item.innerHTML;
+    });
   
   
-  
-  });
+});
