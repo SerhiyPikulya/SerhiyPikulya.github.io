@@ -21,7 +21,7 @@ closeMenu.addEventListener('click', () => {
     
     function hideSkillsGrid() {
         skillsContent.forEach(item => {
-            item.classList.remove('skills__grid_active', 'fade');
+            item.classList.remove('skills__grid_active');
         }); 
   
         skillsTab.forEach(item => {
@@ -30,7 +30,7 @@ closeMenu.addEventListener('click', () => {
     }
   
     function showSkillsGrid(i = 0) {
-      skillsContent[i].classList.add('skills__grid_active', 'fade');
+      skillsContent[i].classList.add('skills__grid_active');
       skillsTab[i].classList.add('skills__tab_active');
     }
   
