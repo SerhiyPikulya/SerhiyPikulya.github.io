@@ -53,11 +53,45 @@ closeMenu.addEventListener('click', () => {
     
 //Шкала навичок
     const counters = document.querySelectorAll('.skills__progress-counter'),
-          lines = document.querySelectorAll('.skills__progress-scale span');
+          lines = document.querySelectorAll('.skills__progress-scale span'),
+          window_height = (window.innerHeight ? window.innerHeight : (document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.offsetHeight));
+          //top = document.body.scrollTop;
 
-    counters.forEach( (item, i) => {
-        lines[i].style.width = item.innerHTML;
-    });
-  
+    // counters.forEach( (item, i) => {
+    //     lines[i].style.width = item.innerHTML;
+    //    // lines[i].style.animation = 'progresScale .6s linear';
+    // });
+
+// ЗМІНА КОЛЬОРУ ПРИ СКРОЛІ
+const black1 = document.querySelector('.sidepanel__divider'),
+      black2 = document.querySelector('.sidepanel__text span'),
+      black3 = document.querySelectorAll('.sidepanel__link svg');
+
+window.addEventListener('scroll', function() {
+    //Анімація після появи елементів на екрані
+    if (window.scrollY > counters[0].offsetTop - window_height) {
+        counters.forEach( (item, i) => {
+            lines[i].style.width = item.innerHTML;
+            lines[i].style.animation = 'progresScale .6s linear';
+        });
+    }
+    
+    if (window.pageYOffset > 500) {
+        black1.style.backgroundColor = '#000';
+        black2.style.color = '#000';
+        black3.forEach (item => {
+            //console.log(item);
+            item.style.fill = '#000';
+        });  
+
+    } else {
+        black1.style.backgroundColor = '#fff';
+        black2.style.color = '#fff';
+        black3.forEach (item => {
+           // console.log(item);
+            item.style.fill = '#fff';
+        });
+    }
+  });
   
 });
